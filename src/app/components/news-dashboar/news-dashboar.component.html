@@ -1,0 +1,15 @@
+<div class="row justify-content-md-center justify-content-center">
+  <div class="col-md-9 margin-top-1rem">
+    <div>
+   <span class="font-size-2rem"> User List  </span>
+<span>    <button mat-fab color="primary" (click)="openDialog()">
+        <mat-icon>add</mat-icon>
+    </button>
+</span>
+</div>
+    <app-info-table *ngIf="dataSource.length" [dataSource]='dataSource'></app-info-table>
+  </div>
+  <div class="col-md-3">
+    <app-side-nav [setCount]='setCount'></app-side-nav>
+  </div>
+</div>

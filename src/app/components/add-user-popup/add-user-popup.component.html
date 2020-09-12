@@ -1,0 +1,73 @@
+<div class="row justify-content-md-center align-items-center justify-content-center wrapped-card ">
+        <div class="col-md-6">
+            <h3>Add New User</h3>
+          <mat-card class="padding-2rem ">
+            <form class="example-form" [formGroup]='userForm' #f="ngForm">
+                  <mat-form-field class="example-full-width col-md-12">
+                      <input matInput formControlName="name" type="text" placeholder="Name" required>
+                      <mat-error *ngIf="getrequired('name').touched && getrequired('name').invalid">
+                      <mat-error *ngIf="getrequired('name').errors.required">Name required
+                      </mat-error>
+                      <mat-error *ngIf="getrequired('name').errors.maxlength">
+                          The text entered exceeds the maximum length of 255 characters
+                      </mat-error>
+                    </mat-error>
+                    </mat-form-field>
+
+                      <mat-form-field>
+                            <input matInput [matDatepicker]="picker" formControlName="birthday" placeholder="Choose a Birthday">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                            <mat-error *ngIf="getrequired('birthday').touched && getrequired('birthday').invalid">
+                                    <mat-error *ngIf="getrequired('birthday').errors.required">Birthday required
+                                    </mat-error>
+                                  </mat-error>
+                          </mat-form-field>
+                        <br>    
+                    <mat-form-field>
+                            <mat-label>Laguage</mat-label>
+                            <mat-select formControlName="lang" multiple>
+                              <mat-option *ngFor="let lang of languages" [value]="lang">{{lang}}</mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="getrequired('lang').touched && getrequired('lang').invalid">
+                                    <mat-error *ngIf="getrequired('lang').errors.required">Laguage required
+                                    </mat-error>
+                                    <mat-error *ngIf="getrequired('lang').errors.pattern">Please Enter Your Laguage.
+                                    </mat-error>
+                                  </mat-error>
+                          </mat-form-field>
+
+                        <mat-radio-group
+                            aria-labelledby="example-radio-group-label"
+                            class="example-radio-group"
+                             formControlName="gender">
+                            <mat-radio-button  class="example-radio-button" value="male">
+                                Male
+                            </mat-radio-button>
+                            <mat-radio-button  class="example-radio-button" value="female">
+                                Female
+                            </mat-radio-button>
+                        </mat-radio-group>
+
+                        <mat-form-field class="example-full-width col-md-12">
+                                <textarea matInput formControlName="about" type="text" placeholder="About" required></textarea>
+                                <mat-error *ngIf="getrequired('about').touched && getrequired('about').invalid">
+                                <mat-error *ngIf="getrequired('about').errors.required">About required
+                                </mat-error>
+                                <mat-error *ngIf="getrequired('about').errors.maxlength || getrequired('about').errors.minlength">
+                                      Please Enter About.
+                                </mat-error>
+                              </mat-error>
+                              </mat-form-field> 
+                         <div class="example-button-row">
+                        <div class="col-md-12 example-button-row">
+
+                        <button class="col-md-3 cursor-pointer margin-top-05rem" mat-dialog-close="Nochanges" mat-raised-button>Cancel</button>
+
+                          <button mat-raised-button  color="primary" class="col-md-8 cursor-pointer margin-top-05rem float-right" [disabled]="!userForm.valid" [mat-dialog-close]="f.value" cdkFocusInitial>Update</button>
+                          </div>
+                      </div>
+                  </form>
+          </mat-card>
+        </div>
+      </div>

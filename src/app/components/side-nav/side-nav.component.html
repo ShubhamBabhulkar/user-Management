@@ -1,0 +1,24 @@
+<mat-drawer-container class="example-container">
+    <mat-drawer mode="side" opened>
+        <div class="text-center">
+            <div>List Progress</div>
+            <div>
+                    <mat-progress-bar
+                    class="example-margin"
+                    color="primary"
+                    mode="determinate"
+                    [value]="value">
+                </mat-progress-bar>
+            </div>
+            <div>
+                <span>Femal User</span><br>
+                <h2>{{setCount?.femaleCount || 0}}</h2>
+            </div>
+            <div>
+                <span>Male User</span><br>
+                <h2>{{setCount?.maleCount || 0}}</h2>
+            </div>
+</div>
+    </mat-drawer>
+  </mat-drawer-container>
+  
